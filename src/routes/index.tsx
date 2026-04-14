@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
-import { TeamHeadSection, TeamMembersSection } from "@/components/TeamSection";
+import { TeamTitleSection, TeamHeadSection, TeamMembersSection } from "@/components/TeamSection";
 import { MilestonesSection } from "@/components/MilestonesSection";
 import { FooterSection } from "@/components/FooterSection";
 
@@ -30,6 +30,7 @@ function Index() {
     <main className="snap-container">
       <HeroSection />
       <AboutSection />
+      <TeamTitleSection />
       <TeamHeadSection />
       <TeamMembersSection />
       <MilestonesSection />

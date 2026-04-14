@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 export function HeroSection() {
   return (
@@ -16,13 +17,17 @@ export function HeroSection() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2}>
-          <div className="relative mt-8 inline-flex items-center justify-center">
+        <ScrollReveal delay={0.15}>
+          <img src={logo} alt="RH Developers logo" className="mx-auto h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32" />
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.25}>
+          <div className="relative mt-6 inline-flex items-center justify-center">
             <div className="pointer-events-none absolute h-36 w-72 rounded-full bg-primary/10 blur-3xl" />
-            <h1 className="relative text-6xl font-bold leading-none tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl">
+            <h1 className="relative text-5xl font-bold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
               <span className="text-gradient">RH</span>
-              <span className="inline-block w-4 sm:w-6 md:w-8" />
-              <span className="text-foreground">Devs</span>
+              <span className="inline-block w-3 sm:w-5 md:w-6" />
+              <span className="text-foreground">Developers</span>
             </h1>
           </div>
         </ScrollReveal>

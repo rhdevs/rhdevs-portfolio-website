@@ -1,19 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
+import { TeamSection } from "@/components/TeamSection";
+import { MilestonesSection } from "@/components/MilestonesSection";
+import { FooterSection } from "@/components/FooterSection";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "RHDevs — Learn. Build. Innovate." },
+      {
+        name: "description",
+        content:
+          "RHDevs is a student-led development CCA focused on technology, innovation, AI, and creativity.",
+      },
+      { property: "og:title", content: "RHDevs — Learn. Build. Innovate." },
+      {
+        property: "og:description",
+        content:
+          "Building future-ready creators, leaders, and problem-solvers.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="min-h-screen">
+      <HeroSection />
+      <AboutSection />
+      <TeamSection />
+      <MilestonesSection />
+      <FooterSection />
+    </main>
+  );
 }

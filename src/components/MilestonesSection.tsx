@@ -41,7 +41,7 @@ const milestones: Milestone[] = [
       "A casual, station-based experience where members rotate through different AI tools and explore what interests them most.",
   },
   {
-    title: "New Frontiers hackathon",
+    title: "New Frontiers Hackathon",
     description:
       "New Frontiers is RHDevs' flagship hackathon for the 2026/27 year, organised in collaboration with NUS StartIT Club and OpenAI. It is open to both coders and non-coders and focuses on innovation, creativity, AI, and interdisciplinary teamwork.",
     flagship: true,

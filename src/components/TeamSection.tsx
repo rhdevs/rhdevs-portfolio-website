@@ -66,13 +66,17 @@ export function TeamMembersSection() {
     <section className="snap-section relative flex flex-col items-center justify-center px-6 py-24">
       <div className="mx-auto w-full max-w-[1400px]">
         
-        <div className="grid gap-y-16 lg:grid-cols-3 lg:gap-x-12 xl:gap-x-20">
+        <div className="grid gap-y-28 lg:grid-cols-3 lg:gap-x-24 xl:gap-x-32">
           
           {/* ENGINEERING HEADS */}
           <div className="lg:col-span-2 relative flex flex-col items-center justify-start">
+            <ScrollReveal delay={0.1}>
+               <h4 className="mb-10 lg:mb-14 text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase text-primary font-bold text-center">Engineering Heads</h4>
+            </ScrollReveal>
+            
             <div className="flex flex-col sm:flex-row justify-center w-full gap-12 sm:gap-16">
               {engineeringHeads.map((member, i) => (
-                <ScrollReveal key={`eng-${i}`} delay={0.1 + i * 0.1}>
+                <ScrollReveal key={`eng-${i}`} delay={0.2 + i * 0.1}>
                   <div className="group flex flex-col items-center text-center">
                     <div className="relative">
                       <div className="pointer-events-none absolute inset-0 rounded-[3rem] bg-primary/10 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -91,23 +95,23 @@ export function TeamMembersSection() {
               ))}
             </div>
 
-            <ScrollReveal delay={0.3}>
-               <h4 className="mt-8 md:mt-12 text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase text-primary font-bold">Engineering Heads</h4>
-            </ScrollReveal>
-
             {/* Vertical Divider for Desktop */}
-            <div className="hidden lg:block absolute -right-6 xl:-right-10 top-0 bottom-16 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
+            <div className="hidden lg:block absolute -right-12 xl:-right-16 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
             
             {/* Horizontal Divider for Mobile/Tablet */}
-            <div className="flex w-full justify-center lg:hidden mt-20">
+            <div className="flex w-full justify-center lg:hidden mt-28">
               <div className="h-px w-full max-w-sm bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
             </div>
           </div>
 
           {/* DESIGN HEAD */}
           <div className="lg:col-span-1 relative flex flex-col items-center lg:justify-start lg:mt-0">
+             <ScrollReveal delay={0.4}>
+               <h4 className="mb-10 lg:mb-14 text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase text-primary font-bold text-center">Design Head</h4>
+             </ScrollReveal>
+
              {designHeads.map((member, i) => (
-                <ScrollReveal key={`design-${i}`} delay={0.4}>
+                <ScrollReveal key={`design-${i}`} delay={0.5}>
                   <div className="group flex flex-col items-center text-center">
                     <div className="relative">
                       <div className="pointer-events-none absolute inset-0 rounded-[3rem] bg-primary/10 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -124,10 +128,6 @@ export function TeamMembersSection() {
                   </div>
                 </ScrollReveal>
               ))}
-
-             <ScrollReveal delay={0.5}>
-               <h4 className="mt-8 md:mt-12 text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase text-primary font-bold">Design Head</h4>
-             </ScrollReveal>
           </div>
 
         </div>

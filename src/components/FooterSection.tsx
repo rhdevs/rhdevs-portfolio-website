@@ -16,9 +16,7 @@ export function FooterSection() {
           <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
             <div>
               <h3 className="text-xl font-bold tracking-tight">
-                <span className="text-gradient">RH</span>
-                <span className="inline-block w-2" />
-                Devs
+                RH Developers
               </h3>
               <p className="mt-2 max-w-xs text-sm text-muted-foreground">
                 Building future-ready creators, leaders, and problem-solvers.

@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "RH Devs — Learn. Build. Innovate." },
+      { title: "RH Developers — Learn. Build. Innovate." },
       {
         name: "description",
         content:

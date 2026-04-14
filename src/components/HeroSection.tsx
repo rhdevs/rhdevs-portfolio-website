@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 export function HeroSection() {
   return (

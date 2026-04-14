@@ -27,10 +27,10 @@ export function AboutSection() {
     <section id="about" className="snap-section relative flex items-center px-6">
       <div className="max-w-5xl mx-auto w-full py-20">
         <ScrollReveal>
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 text-glow-subtle">
             About Us
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-glow-sm">
             Who we are
           </h2>
         </ScrollReveal>
@@ -52,7 +52,7 @@ export function AboutSection() {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <item.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-glow-subtle">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>

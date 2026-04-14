@@ -13,7 +13,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium tracking-wider uppercase mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium tracking-wider uppercase mb-8 text-glow-subtle"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
           Student-Led Development CCA
@@ -23,7 +23,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none text-glow"
         >
           <span className="text-gradient">RH</span>
           <span className="inline-block w-4 sm:w-6 md:w-8" />
@@ -34,7 +34,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-6 text-lg sm:text-xl text-muted-foreground font-light tracking-wide"
+          className="mt-6 text-lg sm:text-xl text-muted-foreground font-light tracking-wide text-glow-subtle"
         >
           Learn. Build. Innovate.
         </motion.p>

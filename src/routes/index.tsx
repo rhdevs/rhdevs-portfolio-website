@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { TeamTitleSection, TeamHeadSection, TeamMembersSection } from "@/components/TeamSection";
-import { MilestonesSection } from "@/components/MilestonesSection";
+import { MilestonesTitleSection, MilestoneScreen, milestoneCount } from "@/components/MilestonesSection";
 import { FooterSection } from "@/components/FooterSection";
 
 export const Route = createFileRoute("/")({
@@ -33,7 +33,10 @@ function Index() {
       <TeamTitleSection />
       <TeamHeadSection />
       <TeamMembersSection />
-      <MilestonesSection />
+      <MilestonesTitleSection />
+      {Array.from({ length: milestoneCount }, (_, i) => (
+        <MilestoneScreen key={i} index={i} />
+      ))}
       <FooterSection />
     </main>
   );

@@ -15,7 +15,7 @@ export function FooterSection() {
         <ScrollReveal>
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
             <div>
-              <h3 className="text-xl font-bold tracking-tight">
+              <h3 className="text-xl font-bold tracking-tight text-glow-sm">
                 <span className="text-gradient">RH</span>
                 <span className="inline-block w-2" />
                 Devs
@@ -26,7 +26,7 @@ export function FooterSection() {
             </div>
 
             <div>
-              <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-4">
+              <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-4 text-glow-subtle">
                 Connect With Us
               </p>
               <div className="flex gap-3">

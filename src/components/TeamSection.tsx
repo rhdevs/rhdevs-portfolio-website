@@ -4,10 +4,13 @@ import teamEng1 from "@/assets/team-eng1.jpg";
 import teamEng2 from "@/assets/team-eng2.jpg";
 import teamDesign from "@/assets/team-design.jpg";
 
-const teamMembers = [
-  { name: "Engineering Head", role: "Engineering Head", image: teamEng1 },
-  { name: "Engineering Head", role: "Engineering Head", image: teamEng2 },
-  { name: "Design Head", role: "Design Head", image: teamDesign },
+const engineeringHeads = [
+  { name: "Zhiyuan", image: teamEng1 },
+  { name: "Ram", image: teamEng2 },
+];
+
+const designHeads = [
+  { name: "Aksh Bhatia", image: teamDesign },
 ];
 
 export function TeamTitleSection() {
@@ -43,13 +46,13 @@ export function TeamHeadSection() {
             <img
               src={teamHead}
               alt="Head of RHDevs"
-              width={280}
-              height={280}
-              className="relative h-56 w-56 rounded-full object-cover glow-border sm:h-64 sm:w-64 md:h-72 md:w-72"
+              width={400}
+              height={400}
+              className="relative h-64 w-64 rounded-[3rem] object-cover glow-border sm:h-80 sm:w-80 md:h-96 md:w-96 shadow-2xl"
             />
           </div>
-          <h3 className="mt-8 text-2xl font-bold sm:text-3xl">Head of RHDevs</h3>
-          <p className="mt-2 text-base font-medium text-muted-foreground">
+          <h3 className="mt-10 mx-auto max-w-[800px] text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl">Patrick Steve Harrison</h3>
+          <p className="mt-4 text-lg font-bold tracking-widest text-primary uppercase">
             Head of RHDevs
           </p>
         </ScrollReveal>
@@ -60,31 +63,75 @@ export function TeamHeadSection() {
 
 export function TeamMembersSection() {
   return (
-    <section className="snap-section relative flex items-center justify-center px-6">
-      <div className="mx-auto max-w-5xl">
-        <div className="grid gap-12 sm:grid-cols-3 sm:gap-10">
-          {teamMembers.map((member, i) => (
-            <ScrollReveal key={i} delay={0.1 + i * 0.08}>
-              <div className="group flex flex-col items-center text-center">
-                <div className="relative">
-                  <div className="pointer-events-none absolute inset-0 rounded-full bg-primary/10 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <img
-                    src={member.image}
-                    alt={member.role}
-                    width={220}
-                    height={220}
-                    loading="lazy"
-                    className="relative h-44 w-44 rounded-full object-cover glow-border transition-transform duration-300 group-hover:scale-[1.03] sm:h-48 sm:w-48 md:h-52 md:w-52"
-                  />
-                </div>
-                <h3 className="mt-6 text-xl font-bold sm:text-2xl">{member.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-                  {member.role}
-                </p>
-              </div>
+    <section className="snap-section relative flex flex-col items-center justify-center px-6 py-24">
+      <div className="mx-auto w-full max-w-[1400px]">
+        
+        <div className="grid gap-y-16 lg:grid-cols-3 lg:gap-x-12 xl:gap-x-20">
+          
+          {/* ENGINEERING HEADS */}
+          <div className="lg:col-span-2 relative flex flex-col items-center justify-start">
+            <div className="flex flex-col sm:flex-row justify-center w-full gap-12 sm:gap-16">
+              {engineeringHeads.map((member, i) => (
+                <ScrollReveal key={`eng-${i}`} delay={0.1 + i * 0.1}>
+                  <div className="group flex flex-col items-center text-center">
+                    <div className="relative">
+                      <div className="pointer-events-none absolute inset-0 rounded-[3rem] bg-primary/10 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        width={320}
+                        height={320}
+                        loading="lazy"
+                        className="relative h-56 w-56 rounded-[2.5rem] object-cover glow-border transition-transform duration-300 group-hover:scale-[1.03] sm:h-64 sm:w-64 xl:h-72 xl:w-72 shadow-xl"
+                      />
+                    </div>
+                    <h3 className="mt-8 text-2xl font-black tracking-tight sm:text-3xl xl:text-4xl">{member.name}</h3>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            <ScrollReveal delay={0.3}>
+               <h4 className="mt-8 md:mt-12 text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase text-primary font-bold">Engineering Heads</h4>
             </ScrollReveal>
-          ))}
+
+            {/* Vertical Divider for Desktop */}
+            <div className="hidden lg:block absolute -right-6 xl:-right-10 top-0 bottom-16 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
+            
+            {/* Horizontal Divider for Mobile/Tablet */}
+            <div className="flex w-full justify-center lg:hidden mt-20">
+              <div className="h-px w-full max-w-sm bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            </div>
+          </div>
+
+          {/* DESIGN HEAD */}
+          <div className="lg:col-span-1 relative flex flex-col items-center lg:justify-start lg:mt-0">
+             {designHeads.map((member, i) => (
+                <ScrollReveal key={`design-${i}`} delay={0.4}>
+                  <div className="group flex flex-col items-center text-center">
+                    <div className="relative">
+                      <div className="pointer-events-none absolute inset-0 rounded-[3rem] bg-primary/10 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        width={320}
+                        height={320}
+                        loading="lazy"
+                        className="relative h-56 w-56 rounded-[2.5rem] object-cover glow-border transition-transform duration-300 group-hover:scale-[1.03] sm:h-64 sm:w-64 xl:h-72 xl:w-72 shadow-xl"
+                      />
+                    </div>
+                    <h3 className="mt-8 text-2xl font-black tracking-tight sm:text-3xl xl:text-4xl">{member.name}</h3>
+                  </div>
+                </ScrollReveal>
+              ))}
+
+             <ScrollReveal delay={0.5}>
+               <h4 className="mt-8 md:mt-12 text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase text-primary font-bold">Design Head</h4>
+             </ScrollReveal>
+          </div>
+
         </div>
+
       </div>
     </section>
   );

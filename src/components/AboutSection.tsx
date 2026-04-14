@@ -24,8 +24,8 @@ const values = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative py-32 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="about" className="snap-section relative flex items-center px-6">
+      <div className="max-w-5xl mx-auto w-full py-20">
         <ScrollReveal>
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4">
             About Us

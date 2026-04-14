@@ -10,13 +10,15 @@ const links = [
 
 export function FooterSection() {
   return (
-    <footer className="relative py-20 px-6 border-t border-border/50">
-      <div className="max-w-5xl mx-auto">
+    <footer className="snap-section relative flex flex-col justify-center px-6 border-t border-border/50">
+      <div className="max-w-5xl mx-auto w-full py-20">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
             <div>
               <h3 className="text-xl font-bold tracking-tight">
-                <span className="text-gradient">RH</span>Devs
+                <span className="text-gradient">RH</span>
+                <span className="inline-block w-2" />
+                Devs
               </h3>
               <p className="mt-2 text-sm text-muted-foreground max-w-xs">
                 Building future-ready creators, leaders, and problem-solvers.

@@ -188,8 +188,8 @@ export function MilestoneScreen({ index }: { index: number }) {
                 {milestone.description}
               </p>
 
-              {/* COLLAB LOGOS (If explicitly New Frontiers) */}
-              {milestone.flagship && milestone.title === "New Frontiers" && (
+              {/* COLLAB LOGOS (If New Frontiers) */}
+              {milestone.flagship && milestone.title.startsWith("New Frontiers") && (
                 <div className="mt-16 flex flex-col items-center justify-center gap-8">
                   <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground/60">In Collaboration With</span>
                   <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">

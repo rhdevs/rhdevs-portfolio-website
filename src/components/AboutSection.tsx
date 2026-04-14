@@ -25,18 +25,18 @@ const values = [
 export function AboutSection() {
   return (
     <section id="about" className="snap-section relative flex items-center px-6">
-      <div className="max-w-5xl mx-auto w-full py-20">
+      <div className="mx-auto w-full max-w-5xl py-20">
         <ScrollReveal>
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 text-glow-subtle">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-primary">
             About Us
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-glow-sm">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Who we are
           </h2>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.15}>
-          <p className="mt-8 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+        <ScrollReveal delay={0.1}>
+          <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             RHDevs is a student-led development CCA dedicated to nurturing
             interest in technology, coding, design, AI, and innovation. It
             provides members with opportunities to learn, collaborate, and
@@ -45,15 +45,15 @@ export function AboutSection() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-6">
+        <div className="mt-16 grid gap-6 md:grid-cols-3">
           {values.map((item, i) => (
-            <ScrollReveal key={item.title} delay={0.1 + i * 0.1}>
-              <div className="group p-6 rounded-xl bg-card/50 glow-border hover:bg-card/80 transition-colors duration-300">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <item.icon className="w-5 h-5 text-primary" />
+            <ScrollReveal key={item.title} delay={0.12 + i * 0.08}>
+              <div className="rounded-2xl border border-border/70 bg-card/60 p-6 transition-colors duration-300 hover:bg-card/80 glow-border">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <item.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-glow-subtle">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               </div>

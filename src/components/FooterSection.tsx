@@ -1,5 +1,5 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { Instagram, Github, Mail, MessageCircle } from "lucide-react";
+import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
 
 const links = [
   { icon: Instagram, label: "Instagram", href: "#" },
@@ -10,23 +10,23 @@ const links = [
 
 export function FooterSection() {
   return (
-    <footer className="snap-section relative flex flex-col justify-center px-6 border-t border-border/50">
-      <div className="max-w-5xl mx-auto w-full py-20">
+    <footer className="relative border-t border-border/40 px-6 py-20">
+      <div className="mx-auto max-w-5xl">
         <ScrollReveal>
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+          <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
             <div>
-              <h3 className="text-xl font-bold tracking-tight text-glow-sm">
+              <h3 className="text-xl font-bold tracking-tight">
                 <span className="text-gradient">RH</span>
                 <span className="inline-block w-2" />
                 Devs
               </h3>
-              <p className="mt-2 text-sm text-muted-foreground max-w-xs">
+              <p className="mt-2 max-w-xs text-sm text-muted-foreground">
                 Building future-ready creators, leaders, and problem-solvers.
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-4 text-glow-subtle">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
                 Connect With Us
               </p>
               <div className="flex gap-3">
@@ -35,9 +35,9 @@ export function FooterSection() {
                     key={link.label}
                     href={link.href}
                     aria-label={link.label}
-                    className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-200"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors duration-200 hover:bg-primary/10 hover:text-primary"
                   >
-                    <link.icon className="w-4 h-4" />
+                    <link.icon className="h-4 w-4" />
                   </a>
                 ))}
               </div>
@@ -45,8 +45,8 @@ export function FooterSection() {
           </div>
         </ScrollReveal>
 
-        <div className="mt-14 pt-6 border-t border-border/30">
-          <p className="text-xs text-muted-foreground/60 text-center">
+        <div className="mt-14 border-t border-border/30 pt-6">
+          <p className="text-center text-xs text-muted-foreground/60">
             © 2026 RHDevs. All rights reserved.
           </p>
         </div>

@@ -1,81 +1,59 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
-    <section className="snap-section relative flex items-center justify-center overflow-hidden">
+    <section className="snap-section relative flex items-center justify-center overflow-hidden px-6">
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="absolute inset-0 bg-radial-glow" />
 
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium tracking-wider uppercase mb-8 text-glow-subtle"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Student-Led Development CCA
-        </motion.div>
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <ScrollReveal delay={0.1}>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Student-Led Development CCA
+          </div>
+        </ScrollReveal>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none text-glow"
-        >
-          <span className="text-gradient">RH</span>
-          <span className="inline-block w-4 sm:w-6 md:w-8" />
-          <span className="text-foreground">Devs</span>
-        </motion.h1>
+        <ScrollReveal delay={0.2}>
+          <div className="relative mt-8 inline-flex items-center justify-center">
+            <div className="pointer-events-none absolute h-36 w-72 rounded-full bg-primary/10 blur-3xl" />
+            <h1 className="relative text-6xl font-bold leading-none tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl">
+              <span className="text-gradient">RH</span>
+              <span className="inline-block w-4 sm:w-6 md:w-8" />
+              <span className="text-foreground">Devs</span>
+            </h1>
+          </div>
+        </ScrollReveal>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-6 text-lg sm:text-xl text-muted-foreground font-light tracking-wide text-glow-subtle"
-        >
-          Learn. Build. Innovate.
-        </motion.p>
+        <ScrollReveal delay={0.3}>
+          <p className="mt-6 text-lg font-light tracking-wide text-muted-foreground sm:text-xl">
+            Learn. Build. Innovate.
+          </p>
+        </ScrollReveal>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.75 }}
-          className="mt-3 text-sm sm:text-base text-muted-foreground/70 max-w-lg mx-auto"
-        >
-          Building future-ready creators, leaders, and problem-solvers.
-        </motion.p>
+        <ScrollReveal delay={0.4}>
+          <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground/75 sm:text-base">
+            Building future-ready creators, leaders, and problem-solvers.
+          </p>
+        </ScrollReveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-10 flex gap-4 justify-center"
-        >
-          <Button variant="hero" size="lg" asChild>
-            <a href="#about">Explore</a>
-          </Button>
-          <Button variant="heroOutline" size="lg" asChild>
-            <a href="#milestones">Milestones</a>
-          </Button>
-        </motion.div>
+        <ScrollReveal delay={0.5}>
+          <div className="mt-10 flex justify-center gap-4">
+            <Button variant="hero" size="lg" asChild>
+              <a href="#about">Explore</a>
+            </Button>
+            <Button variant="heroOutline" size="lg" asChild>
+              <a href="#milestones">Milestones</a>
+            </Button>
+          </div>
+        </ScrollReveal>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-5 h-5 text-muted-foreground/50" />
-        </motion.div>
-      </motion.div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 motion-safe:animate-bounce">
+        <ChevronDown className="h-5 w-5 text-muted-foreground/50" />
+      </div>
     </section>
   );
 }

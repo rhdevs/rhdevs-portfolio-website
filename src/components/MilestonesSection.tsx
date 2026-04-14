@@ -10,87 +10,22 @@ interface Milestone {
 }
 
 const milestones: Milestone[] = [
-  {
-    title: "Prompt Like a Pro",
-    description:
-      "An interactive introduction to the art of prompting. This session helps members understand how to communicate effectively with AI tools to get clearer, more useful, and more creative results.",
-  },
-  {
-    title: "AI x Creativity Lab",
-    description:
-      "A hands-on creative session where members experiment with AI as a tool for ideation, design, and storytelling.",
-  },
-  {
-    title: "Build a Startup in 90 Minutes",
-    description:
-      "A fast-paced team challenge where participants use AI tools to create a startup idea from scratch and pitch it.",
-  },
-  {
-    title: "No-Code, Big Ideas",
-    description:
-      "A beginner-friendly workshop showing how students can bring ideas to life without writing code using no-code and AI-assisted tools.",
-  },
-  {
-    title: "AI for School Survival",
-    description:
-      "A practical workshop on using AI tools to support student life, studying, planning, and productivity.",
-  },
-  {
-    title: "Design Your Digital Alter Ego",
-    description:
-      "A creative workshop where participants use AI tools to imagine and design their digital identity or personal brand.",
-  },
-  {
-    title: "AI Mythbusters",
-    description:
-      "A discussion-based session exploring what AI can actually do, what it cannot do, and what people often misunderstand about it.",
-  },
-  {
-    title: "Create a Campaign with AI",
-    description:
-      "A collaborative workshop where teams use AI tools to build an awareness campaign around a meaningful cause or issue.",
-  },
-  {
-    title: "Future Jobs, Future Skills",
-    description:
-      "A forward-looking session on how AI is shaping careers, industries, and the skills students need for the future.",
-  },
-  {
-    title: "Human vs AI Creative Challenge",
-    description:
-      "An engaging challenge where teams compare human-only work, AI-assisted work, and hybrid work.",
-  },
-  {
-    title: "AI Escape Room",
-    description:
-      "A themed challenge where participants solve puzzles and complete tasks using logic, creativity, teamwork, and AI tools.",
-  },
-  {
-    title: "From Idea to Pitch",
-    description:
-      "A workshop designed to take members from a simple problem statement to a polished solution pitch using AI tools.",
-  },
-  {
-    title: "AI Story Studio",
-    description:
-      "A workshop where members use AI tools to create stories, characters, worlds, and visual concepts.",
-  },
-  {
-    title: "Reinvent the Ordinary",
-    description:
-      "Participants identify everyday problems and use AI tools to rethink and improve those experiences.",
-  },
-  {
-    title: "The AI Makers' Playground",
-    description:
-      "A casual, station-based experience where members rotate through different AI tools and explore what interests them most.",
-  },
-  {
-    title: "New Frontiers",
-    description:
-      "New Frontiers is RHDevs' flagship hackathon for the 2026/27 year, organised in collaboration with NUS StartIT Club and OpenAI. It is open to both coders and non-coders and focuses on innovation, creativity, AI, and interdisciplinary teamwork.",
-    flagship: true,
-  },
+  { title: "Prompt Like a Pro", description: "An interactive introduction to the art of prompting. This session helps members understand how to communicate effectively with AI tools to get clearer, more useful, and more creative results." },
+  { title: "AI x Creativity Lab", description: "A hands-on creative session where members experiment with AI as a tool for ideation, design, and storytelling." },
+  { title: "Build a Startup in 90 Minutes", description: "A fast-paced team challenge where participants use AI tools to create a startup idea from scratch and pitch it." },
+  { title: "No-Code, Big Ideas", description: "A beginner-friendly workshop showing how students can bring ideas to life without writing code using no-code and AI-assisted tools." },
+  { title: "AI for School Survival", description: "A practical workshop on using AI tools to support student life, studying, planning, and productivity." },
+  { title: "Design Your Digital Alter Ego", description: "A creative workshop where participants use AI tools to imagine and design their digital identity or personal brand." },
+  { title: "AI Mythbusters", description: "A discussion-based session exploring what AI can actually do, what it cannot do, and what people often misunderstand about it." },
+  { title: "Create a Campaign with AI", description: "A collaborative workshop where teams use AI tools to build an awareness campaign around a meaningful cause or issue." },
+  { title: "Future Jobs, Future Skills", description: "A forward-looking session on how AI is shaping careers, industries, and the skills students need for the future." },
+  { title: "Human vs AI Creative Challenge", description: "An engaging challenge where teams compare human-only work, AI-assisted work, and hybrid work." },
+  { title: "AI Escape Room", description: "A themed challenge where participants solve puzzles and complete tasks using logic, creativity, teamwork, and AI tools." },
+  { title: "From Idea to Pitch", description: "A workshop designed to take members from a simple problem statement to a polished solution pitch using AI tools." },
+  { title: "AI Story Studio", description: "A workshop where members use AI tools to create stories, characters, worlds, and visual concepts." },
+  { title: "Reinvent the Ordinary", description: "Participants identify everyday problems and use AI tools to rethink and improve those experiences." },
+  { title: "The AI Makers' Playground", description: "A casual, station-based experience where members rotate through different AI tools and explore what interests them most." },
+  { title: "New Frontiers", description: "New Frontiers is RHDevs' flagship hackathon for the 2026/27 year, organised in collaboration with NUS StartIT Club and OpenAI. It is open to both coders and non-coders and focuses on innovation, creativity, AI, and interdisciplinary teamwork.", flagship: true },
 ];
 
 function MilestoneItem({ milestone, index }: { milestone: Milestone; index: number }) {
@@ -99,7 +34,6 @@ function MilestoneItem({ milestone, index }: { milestone: Milestone; index: numb
   return (
     <ScrollReveal delay={Math.min(index * 0.04, 0.4)}>
       <div className="relative flex gap-4 sm:gap-6">
-        {/* Timeline line */}
         <div className="flex flex-col items-center">
           <div
             className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 ${
@@ -113,7 +47,6 @@ function MilestoneItem({ milestone, index }: { milestone: Milestone; index: numb
           )}
         </div>
 
-        {/* Content */}
         <div className="pb-8 flex-1">
           <button
             onClick={() => setOpen(!open)}
@@ -168,7 +101,7 @@ function MilestoneItem({ milestone, index }: { milestone: Milestone; index: numb
 
 export function MilestonesSection() {
   return (
-    <section id="milestones" className="relative py-32 px-6">
+    <section id="milestones" className="snap-section relative px-6 py-20 overflow-y-auto">
       <div className="absolute inset-0 bg-radial-glow opacity-50" />
       <div className="relative max-w-3xl mx-auto">
         <ScrollReveal>

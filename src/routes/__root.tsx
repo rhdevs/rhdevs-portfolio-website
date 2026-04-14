@@ -1,4 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "framer-motion";
 
 import appCss from "../styles.css?url";
 
@@ -70,6 +71,53 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div key={location.pathname} className="min-h-screen relative w-full h-full">
+        {/* The Page Content */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full h-full"
+        >
+          {children}
+        </motion.div>
+
+        {/* Geometric Shutter - Left (Top Bracket) */}
+        <motion.div
+          initial={{ x: "0%" }}
+          animate={{ x: "-100%" }}
+          exit={{ x: "0%" }}
+          transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
+          className="pointer-events-none fixed inset-y-0 left-0 z-[100] flex w-1/2 flex-col items-end justify-center bg-zinc-950"
+        >
+          <div className="z-[101] -mr-16 h-48 w-48 border-l-[40px] border-t-[40px] border-white/5 md:-mr-32 md:h-96 md:w-96" />
+        </motion.div>
+
+        {/* Geometric Shutter - Right (Bottom Bracket) */}
+        <motion.div
+          initial={{ x: "0%" }}
+          animate={{ x: "100%" }}
+          exit={{ x: "0%" }}
+          transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
+          className="pointer-events-none fixed inset-y-0 right-0 z-[100] flex w-1/2 flex-col items-start justify-center bg-zinc-900"
+        >
+          <div className="z-[101] -ml-16 h-48 w-48 border-b-[40px] border-r-[40px] border-black/10 md:-ml-32 md:h-96 md:w-96" />
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <PageTransition>
+      <Outlet />
+    </PageTransition>
+  );
 }

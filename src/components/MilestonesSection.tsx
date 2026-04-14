@@ -1,5 +1,7 @@
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { motion } from "framer-motion";
 import { Star, Zap } from "lucide-react";
+import startitLogo from "@/assets/startit_logo.jpg";
+import openaiLogo from "@/assets/openai_logo.jpg";
 
 interface Milestone {
   title: string;
@@ -11,7 +13,7 @@ const milestones: Milestone[] = [
   {
     title: "No-Code, Big Ideas",
     description:
-      "A beginner-friendly workshop showing how students can bring ideas to life without writing code using no-code and AI-assisted tools.",
+      "No Code, Big Ideas is a beginner-friendly workshop that introduces students to the world of no-code creation. Using intuitive platforms and AI-assisted tools, participants will learn how to transform ideas into simple apps, prototypes, and digital experiences — no programming required."
   },
   {
     title: "AI for School Survival",
@@ -39,7 +41,7 @@ const milestones: Milestone[] = [
       "A casual, station-based experience where members rotate through different AI tools and explore what interests them most.",
   },
   {
-    title: "New Frontiers",
+    title: "New Frontiers hackathon",
     description:
       "New Frontiers is RHDevs' flagship hackathon for the 2026/27 year, organised in collaboration with NUS StartIT Club and OpenAI. It is open to both coders and non-coders and focuses on innovation, creativity, AI, and interdisciplinary teamwork.",
     flagship: true,
@@ -48,86 +50,165 @@ const milestones: Milestone[] = [
 
 export function MilestonesTitleSection() {
   return (
-    <section id="milestones" className="snap-section relative flex items-center justify-center px-6">
+    <section id="milestones" className="snap-section relative flex items-center justify-center px-6 overflow-hidden">
       <div className="absolute inset-0 bg-radial-glow opacity-60" />
-      <div className="pointer-events-none absolute bottom-0 left-1/2 top-1/2 hidden w-px -translate-x-1/2 bg-primary/55 md:block" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 top-1/2 w-px -translate-x-1/2 bg-gradient-to-t from-primary/80 to-transparent hidden md:block" />
 
-      <div className="relative text-center">
-        <ScrollReveal>
-          <div className="relative inline-block">
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-28 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
-            <div className="relative mb-6 flex items-center justify-center gap-3">
-              <div className="h-px w-8 bg-primary/60" />
-              <p className="text-sm font-medium uppercase tracking-[0.3em] text-muted-foreground">
-                Roadmap
-              </p>
-              <div className="h-px w-8 bg-primary/60" />
-            </div>
-            <h2 className="relative text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
-              26/27 Milestones
-            </h2>
-          </div>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            A look at RHDevs' key workshops, experiences, and flagship events
-            for the 2026/27 journey.
-          </p>
-        </ScrollReveal>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10 text-center"
+      >
+        <div className="relative inline-block">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[80px]" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ type: "spring", bounce: 0.4, duration: 0.8 }}
+            className="relative mb-6 flex items-center justify-center gap-3"
+          >
+            <div className="h-px w-12 bg-primary/80" />
+            <p className="text-sm font-bold uppercase tracking-[0.4em] text-primary">
+              Roadmap
+            </p>
+            <div className="h-px w-12 bg-primary/80" />
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 50, rotateX: 20 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ type: "spring", bounce: 0.4, duration: 1, delay: 0.1 }}
+            style={{ transformPerspective: 1000 }}
+            className="relative text-6xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/20 sm:text-7xl md:text-8xl lg:text-9xl"
+          >
+            26/27 Milestones
+          </motion.h2>
+        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground sm:text-xl"
+        >
+          A look at RHDevs' key workshops, experiences, and flagship events
+          for the 2026/27 journey.
+        </motion.p>
+      </motion.div>
     </section>
   );
 }
 
 export function MilestoneScreen({ index }: { index: number }) {
   const milestone = milestones[index];
-  const isLeft = index % 2 === 0;
 
   return (
-    <section className="snap-section relative flex items-center px-6">
-      <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-primary/55 md:block" />
+    <section className="snap-section relative flex flex-col items-center justify-center overflow-hidden px-6 text-center">
 
-      <article className="relative mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-14">
-        <div className={isLeft ? "md:pr-16 md:text-right" : "md:order-3 md:pl-16 md:text-left"}>
-          <ScrollReveal direction={isLeft ? "right" : "left"}>
+      {/* Background vertical line */}
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 hidden w-px -translate-x-1/2 bg-primary/10 md:block" />
+
+      {/* Animated glowing vertical line */}
+      <motion.div
+        initial={{ height: "0%" }}
+        whileInView={{ height: "100%" }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 1.2, ease: "circOut" }}
+        className="pointer-events-none absolute left-1/2 top-0 z-0 hidden w-px -translate-x-1/2 shadow-[0_0_15px_rgba(255,255,255,0.8)] bg-primary md:block"
+      />
+
+      {/* Massive subtle background number */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none text-[30vw] font-black text-white/[0.02]">
+        {String(index + 1).padStart(2, "0")}
+      </div>
+
+      <article className="relative z-10 flex w-full max-w-4xl flex-col items-center">
+
+        {/* 1. THE TOP NODE DOT */}
+        <div className="relative flex h-24 w-24 items-center justify-center bg-background rounded-full mb-8 z-20">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ type: "spring", bounce: 0.6 }}
+            className={`absolute h-10 w-10 animate-ping rounded-full ${milestone.flagship ? "bg-primary/30" : "bg-primary/10"}`}
+          />
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ type: "spring", bounce: 0.5, delay: 0.1 }}
+            className={`relative h-6 w-6 rounded-full border-4 ${milestone.flagship ? "shadow-[0_0_20px_rgba(255,255,255,1)] border-primary bg-white" : "shadow-[0_0_10px_rgba(255,255,255,0.5)] border-primary bg-background"}`}
+          />
+        </div>
+
+        {/* CONTAINER FOR TITLE AND DESC WITH MASK TO HIDE THE LINE */}
+        <div className="relative z-10 pb-16 pt-4 px-4 bg-background w-[110%] md:w-[130%] max-w-5xl [box-shadow:0_0_60px_60px_hsl(0,0%,3%)] flex flex-col items-center">
+
+          {/* 2. THE BIG TITLE */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.6 }}
+            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+            className="flex flex-col items-center max-w-4xl"
+          >
             {milestone.flagship && (
-              <div className={`mb-3 flex items-center gap-2 ${isLeft ? "md:justify-end" : "md:justify-start"}`}>
-                <Zap className="h-4 w-4 text-primary" />
-                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+              <div className="mb-6 flex items-center justify-center gap-2">
+                <Zap className="h-6 w-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] text-primary" />
+                <span className="text-base font-bold uppercase tracking-[0.4em] text-primary">
                   Flagship
                 </span>
               </div>
             )}
 
-            <h3 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h3 className="text-5xl font-black tracking-tighter text-foreground sm:text-6xl md:text-8xl text-center leading-[1.1]">
               {milestone.title}
             </h3>
 
             {milestone.flagship && (
-              <Star className={`mt-4 h-5 w-5 text-primary ${isLeft ? "md:ml-auto" : ""}`} />
+              <Star className="mt-8 h-8 w-8 text-primary" />
             )}
-          </ScrollReveal>
-        </div>
+          </motion.div>
 
-        <div className="relative hidden h-20 w-20 items-center justify-center md:flex">
-          <div className="absolute left-1/2 top-1/2 h-px w-10 -translate-x-full -translate-y-1/2 bg-primary/55" />
-          <div className="absolute left-1/2 top-1/2 h-px w-10 -translate-y-1/2 bg-primary/55" />
-          <div className={`relative h-4 w-4 rounded-full border-2 ${milestone.flagship ? "border-primary bg-primary" : "border-primary/80 bg-background"}`} />
-        </div>
+          {/* 3. THE EXPLANATION */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.6 }}
+            transition={{ duration: 0.6, type: "spring", bounce: 0.4, delay: 0.1 }}
+            className="mt-10 md:mt-16 w-full max-w-3xl"
+          >
+            <div className="relative text-center">
 
-        <div className={isLeft ? "md:pl-16" : "md:order-1 md:pr-16"}>
-          <ScrollReveal direction={isLeft ? "left" : "right"} delay={0.08}>
-            <div className="rounded-3xl border border-border/80 bg-card/72 p-6 glow-border sm:p-8">
-              <p className={`text-sm leading-relaxed text-muted-foreground sm:text-base ${!isLeft ? "md:text-right" : ""}`}>
+              <p className="text-lg md:text-2xl font-medium leading-[1.6] text-zinc-300">
                 {milestone.description}
               </p>
-              <div className={`mt-5 flex items-center gap-2 ${isLeft ? "justify-start" : "md:justify-end"}`}>
-                <div className={`h-1.5 w-1.5 rounded-full ${milestone.flagship ? "bg-primary" : "bg-primary/45"}`} />
-                <span className="text-xs font-mono text-muted-foreground/60">
-                  {String(index + 1).padStart(2, "0")} / {String(milestones.length).padStart(2, "0")}
+
+              {/* COLLAB LOGOS (If explicitly New Frontiers) */}
+              {milestone.flagship && milestone.title === "New Frontiers" && (
+                <div className="mt-16 flex flex-col items-center justify-center gap-8">
+                  <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground/60">In Collaboration With</span>
+                  <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
+                    <img src={startitLogo} alt="NUS StartIT Logo" className="h-[150px] w-auto object-contain mix-blend-screen mix-blend-plus-lighter opacity-90" />
+                    <span className="text-muted-foreground/30 font-light text-6xl">×</span>
+                    <img src={openaiLogo} alt="OpenAI Logo" className="h-[200px] w-auto object-contain mix-blend-screen mix-blend-plus-lighter opacity-90" />
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-16 flex items-center justify-center">
+                <span className="text-lg font-mono font-bold tracking-[0.3em] text-white/30 bg-white/5 py-2 px-6 rounded-full">
+                  PHASE {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
             </div>
-          </ScrollReveal>
+          </motion.div>
         </div>
+
       </article>
     </section>
   );

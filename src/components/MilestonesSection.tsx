@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { ChevronDown, Star } from "lucide-react";
+import { ChevronDown, Star, Zap } from "lucide-react";
 
 interface Milestone {
   title: string;
@@ -30,71 +30,82 @@ const milestones: Milestone[] = [
 
 function MilestoneItem({ milestone, index }: { milestone: Milestone; index: number }) {
   const [open, setOpen] = useState(false);
+  const num = String(index + 1).padStart(2, "0");
 
   return (
-    <ScrollReveal delay={Math.min(index * 0.04, 0.4)}>
-      <div className="relative flex gap-4 sm:gap-6">
-        <div className="flex flex-col items-center">
-          <div
-            className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 ${
-              milestone.flagship
-                ? "bg-primary shadow-[0_0_12px] shadow-primary"
-                : "bg-border group-hover:bg-primary/50"
-            } transition-colors`}
-          />
-          {index < milestones.length - 1 && (
-            <div className="w-px flex-1 bg-border/50" />
-          )}
-        </div>
-
-        <div className="pb-8 flex-1">
-          <button
-            onClick={() => setOpen(!open)}
-            className={`w-full text-left group rounded-xl p-4 sm:p-5 transition-all duration-300 ${
-              milestone.flagship
-                ? "bg-primary/5 glow-border hover:bg-primary/10"
-                : "bg-card/30 border border-border/50 hover:bg-card/60 hover:border-border"
+    <ScrollReveal delay={Math.min(index * 0.03, 0.3)}>
+      <button
+        onClick={() => setOpen(!open)}
+        className={`w-full text-left group relative transition-all duration-300 ${
+          milestone.flagship
+            ? "py-6 px-6 sm:px-8 rounded-2xl border border-primary/30 bg-primary/5 hover:bg-primary/10"
+            : "py-5 border-b border-border/40 hover:border-border"
+        }`}
+      >
+        <div className="flex items-center gap-4 sm:gap-6">
+          {/* Number */}
+          <span
+            className={`text-xs font-mono tracking-wider flex-shrink-0 ${
+              milestone.flagship ? "text-primary" : "text-muted-foreground/40"
             }`}
           >
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                {milestone.flagship && (
-                  <Star className="w-4 h-4 text-primary flex-shrink-0" />
-                )}
-                <h3
-                  className={`font-semibold text-sm sm:text-base ${
-                    milestone.flagship ? "text-primary" : "text-foreground"
-                  }`}
-                >
-                  {milestone.title}
-                </h3>
-              </div>
-              <motion.div
-                animate={{ rotate: open ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronDown className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </motion.div>
-            </div>
+            {num}
+          </span>
 
-            <AnimatePresence>
-              {open && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {milestone.description}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
+          {/* Title */}
+          <div className="flex-1 flex items-center gap-3 min-w-0">
+            {milestone.flagship && (
+              <Star className="w-5 h-5 text-primary flex-shrink-0" />
+            )}
+            <h3
+              className={`font-semibold truncate transition-colors duration-200 ${
+                milestone.flagship
+                  ? "text-primary text-lg sm:text-xl"
+                  : "text-foreground text-base sm:text-lg group-hover:text-primary"
+              }`}
+            >
+              {milestone.title}
+            </h3>
+          </div>
+
+          {/* Expand icon */}
+          <motion.div
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex-shrink-0"
+          >
+            <ChevronDown
+              className={`w-4 h-4 ${
+                milestone.flagship ? "text-primary" : "text-muted-foreground"
+              }`}
+            />
+          </motion.div>
         </div>
-      </div>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <p className="mt-4 ml-10 sm:ml-14 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
+                {milestone.description}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Flagship badge */}
+        {milestone.flagship && (
+          <div className="absolute -top-3 right-6 flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold tracking-wider uppercase">
+            <Zap className="w-3 h-3" />
+            Flagship
+          </div>
+        )}
+      </button>
     </ScrollReveal>
   );
 }
@@ -105,23 +116,26 @@ export function MilestonesSection() {
       <div className="absolute inset-0 bg-radial-glow opacity-50" />
       <div className="relative max-w-3xl mx-auto">
         <ScrollReveal>
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4">
-            Roadmap
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-px bg-primary" />
+            <p className="text-sm font-medium tracking-[0.3em] uppercase text-muted-foreground">
+              Roadmap
+            </p>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter">
             26/27 Milestones
           </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <p className="mt-6 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
+          <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
             A look at RHDevs' key workshops, experiences, and flagship events
             for the 2026/27 journey — designed to make technology, creativity,
             and innovation accessible to everyone.
           </p>
         </ScrollReveal>
 
-        <div className="mt-14">
+        <div className="mt-14 space-y-0">
           {milestones.map((milestone, i) => (
             <MilestoneItem key={milestone.title} milestone={milestone} index={i} />
           ))}

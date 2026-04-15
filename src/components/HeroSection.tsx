@@ -10,13 +10,6 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-radial-glow" />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <ScrollReveal delay={0.1}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Student-Led Development CCA
-          </div>
-        </ScrollReveal>
-
         <ScrollReveal delay={0.15}>
           <img src={logo} alt="RH Developers logo" className="mx-auto h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32" />
         </ScrollReveal>

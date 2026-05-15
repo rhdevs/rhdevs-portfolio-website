@@ -5,23 +5,22 @@ import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">
-          Page not found
-        </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="flex min-h-screen items-center justify-center bg-ink px-6">
+      <div className="max-w-md">
+        <p className="section-label">Nº 404</p>
+        <h1 className="mt-3 text-h2 font-display font-extrabold text-paper">
+          Not found
+        </h1>
+        <p className="mt-4 text-paper-muted">
+          The page you were looking for has moved, been retired, or never existed.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="underline-grow mt-8 inline-flex items-center gap-2 font-display font-semibold uppercase tracking-[0.06em] text-oxblood"
+        >
+          Return to the index
+          <span aria-hidden>→</span>
+        </Link>
       </div>
     </div>
   );
@@ -32,14 +31,20 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "RHDevs — A student-led developer community at Raffles" },
+      {
+        name: "description",
+        content:
+          "RHDevs is a student-led developer community at Raffles. Cohort 26/27 runs an annual programme of seven workshops and the New Frontiers hackathon with OpenAI and NUS StartIT.",
+      },
+      { property: "og:title", content: "RHDevs — Developer community at Raffles" },
+      {
+        property: "og:description",
+        content:
+          "An annual programme of workshops and a flagship hackathon, in partnership with OpenAI and NUS StartIT.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
@@ -47,8 +52,13 @@ export const Route = createRootRoute({
         href: appCss,
       },
       {
+        rel: "preconnect",
+        href: "https://api.fontshare.com",
+        crossOrigin: "anonymous",
+      },
+      {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=general-sans@400,500,600&display=swap",
       },
     ],
   }),
@@ -59,15 +69,11 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
+    <>
+      <HeadContent />
+      {children}
+      <Scripts />
+    </>
   );
 }
 
@@ -76,39 +82,15 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} className="min-h-screen relative w-full h-full">
-        {/* The Page Content */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full h-full"
-        >
-          {children}
-        </motion.div>
-
-        {/* Geometric Shutter - Left (Top Bracket) */}
-        <motion.div
-          initial={{ x: "0%" }}
-          animate={{ x: "-100%" }}
-          exit={{ x: "0%" }}
-          transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
-          className="pointer-events-none fixed inset-y-0 left-0 z-[100] flex w-1/2 flex-col items-end justify-center bg-zinc-950"
-        >
-          <div className="z-[101] -mr-16 h-48 w-48 border-l-[40px] border-t-[40px] border-white/5 md:-mr-32 md:h-96 md:w-96" />
-        </motion.div>
-
-        {/* Geometric Shutter - Right (Bottom Bracket) */}
-        <motion.div
-          initial={{ x: "0%" }}
-          animate={{ x: "100%" }}
-          exit={{ x: "0%" }}
-          transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
-          className="pointer-events-none fixed inset-y-0 right-0 z-[100] flex w-1/2 flex-col items-start justify-center bg-zinc-900"
-        >
-          <div className="z-[101] -ml-16 h-48 w-48 border-b-[40px] border-r-[40px] border-black/10 md:-ml-32 md:h-96 md:w-96" />
-        </motion.div>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, scale: 0.985 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 1.005 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="min-h-screen"
+      >
+        {children}
       </motion.div>
     </AnimatePresence>
   );
@@ -116,8 +98,30 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <PageTransition>
-      <Outlet />
-    </PageTransition>
+    <>
+      {/*
+        Knockout filter for partner JPGs. Maps the source's luminance into
+        the alpha channel (dark pixels → opaque, bright pixels → transparent)
+        and remaps RGB to the warm paper color. Used via .logo-knockout.
+      */}
+      <svg width="0" height="0" aria-hidden focusable="false" className="absolute size-0">
+        <defs>
+          <filter id="logo-knockout" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="
+                0 0 0 0 0.945
+                0 0 0 0 0.928
+                0 0 0 0 0.879
+                -0.34 -0.34 -0.34 0 1.02
+              "
+            />
+          </filter>
+        </defs>
+      </svg>
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
+    </>
   );
 }

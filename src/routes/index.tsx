@@ -1,25 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
-import { TeamTitleSection, TeamHeadSection, TeamMembersSection } from "@/components/TeamSection";
-import { MilestonesTitleSection, MilestoneScreen, milestoneCount } from "@/components/MilestonesSection";
+import { CohortSection } from "@/components/TeamSection";
+import { ProgrammeSection } from "@/components/MilestonesSection";
+import { PartnersSection } from "@/components/PartnersSection";
 import { FooterSection } from "@/components/FooterSection";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "RH Developers — Learn. Build. Innovate." },
+      { title: "RHDevs — A student-led developer community at Raffles" },
       {
         name: "description",
         content:
-          "RHDevs is a student-led development CCA focused on technology, innovation, AI, and creativity.",
+          "RHDevs is a student-led developer community at Raffles. Cohort 26/27 runs seven workshops and the New Frontiers hackathon with OpenAI and NUS StartIT.",
       },
-      { property: "og:title", content: "RH Devs — Learn. Build. Innovate." },
+      {
+        property: "og:title",
+        content: "RHDevs — Developer community at Raffles",
+      },
       {
         property: "og:description",
         content:
-          "Building future-ready creators, leaders, and problem-solvers.",
+          "Seven workshops, one flagship hackathon, in partnership with OpenAI and NUS StartIT.",
       },
     ],
   }),
@@ -27,16 +31,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="snap-container">
+    <main className="bg-ink text-paper">
       <HeroSection />
       <AboutSection />
-      <TeamTitleSection />
-      <TeamHeadSection />
-      <TeamMembersSection />
-      <MilestonesTitleSection />
-      {Array.from({ length: milestoneCount }, (_, i) => (
-        <MilestoneScreen key={i} index={i} />
-      ))}
+      <CohortSection />
+      <ProgrammeSection />
+      <PartnersSection />
       <FooterSection />
     </main>
   );

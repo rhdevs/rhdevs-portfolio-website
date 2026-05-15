@@ -20,6 +20,10 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Local Claude Code / Playwright artifacts
+.claude/
+.shots/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

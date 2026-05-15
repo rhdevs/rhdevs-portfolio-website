@@ -1,64 +1,77 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { Code, Lightbulb, Users } from "lucide-react";
 
-const values = [
+const pillars = [
   {
-    icon: Code,
+    id: "01",
     title: "Mission",
-    description:
-      "To equip students with technical skills, project experience, and a collaborative mindset through workshops, team projects, and innovation-driven activities.",
+    body:
+      "Equip students with technical skill, project experience, and a working collaborator's mindset, through workshops, team projects, and innovation-led activities.",
   },
   {
-    icon: Lightbulb,
+    id: "02",
     title: "Vision",
-    description:
-      "To be a leading student tech community that develops future-ready creators, leaders, and problem-solvers.",
+    body:
+      "Be the developer community in Singapore secondary education that produces future-ready creators, leaders, and problem-solvers.",
   },
   {
-    icon: Users,
-    title: "Community",
-    description:
-      "A supportive environment where members learn, collaborate, and create through hands-on experiences and meaningful projects.",
+    id: "03",
+    title: "Practice",
+    body:
+      "Learn out loud. Build in public. Ship things that work, not pitch decks. Help the next member do the same.",
   },
 ];
 
 export function AboutSection() {
   return (
-    <section id="about" className="snap-section relative flex items-center px-6">
-      <div className="mx-auto w-full max-w-5xl py-20">
-        <ScrollReveal>
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            About Us
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Who we are
-          </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            RHDevs is a student-led development CCA dedicated to nurturing
-            interest in technology, coding, design, AI, and innovation. It
-            provides members with opportunities to learn, collaborate, and
-            create through hands-on experiences, meaningful projects, and a
-            supportive community.
-          </p>
-        </ScrollReveal>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {values.map((item, i) => (
-            <ScrollReveal key={item.title} delay={0.12 + i * 0.08}>
-              <div className="rounded-2xl border border-border/70 bg-card/60 p-6 transition-colors duration-300 hover:bg-card/80 glow-border">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                  <item.icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
+    <section
+      id="about"
+      className="relative bg-ink py-[clamp(6rem,2rem+8vw,11rem)]"
+    >
+      <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10">
+        <div className="grid gap-y-14 lg:grid-cols-12 lg:gap-x-12">
+          <div className="lg:col-span-5">
+            <ScrollReveal>
+              <p className="section-label">Nº 01 — About</p>
+              <h2 className="mt-4 font-display text-h2 font-extrabold text-paper">
+                We run a tech CCA the way a small studio runs itself.
+              </h2>
             </ScrollReveal>
-          ))}
+          </div>
+
+          <div className="lg:col-span-7">
+            <ScrollReveal delay={0.05}>
+              <p className="text-lead measure-prose text-paper">
+                RHDevs is a student-led developer community at Raffles. We
+                exist for students who want to build things that work, not
+                students who only want to read about technology. The bar we
+                hold is the bar a working tech studio would hold.
+              </p>
+            </ScrollReveal>
+
+            <ol className="mt-14 space-y-12 sm:mt-20">
+              {pillars.map((pillar, i) => (
+                <ScrollReveal key={pillar.id} delay={0.1 + i * 0.05}>
+                  <li className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 sm:grid-cols-[6rem_1fr] sm:gap-x-10">
+                    <span
+                      className="font-display text-h3 font-extrabold leading-none text-oxblood tabular"
+                      data-numeric
+                    >
+                      {pillar.id}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-h4 font-bold leading-tight text-paper">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-3 measure-prose text-paper-muted">
+                        {pillar.body}
+                      </p>
+                    </div>
+                    <span className="col-span-2 mt-2 h-px w-full bg-rule-faint" />
+                  </li>
+                </ScrollReveal>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>

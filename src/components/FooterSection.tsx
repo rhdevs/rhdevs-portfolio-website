@@ -1,52 +1,74 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
+import logo from "@/assets/logo.png";
 
-const links = [
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Github, label: "GitHub", href: "#" },
-  { icon: Mail, label: "Email", href: "#" },
-  { icon: MessageCircle, label: "Discord", href: "#" },
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+const links: FooterLink[] = [
+  { label: "Instagram", href: "#" },
+  { label: "GitHub", href: "#" },
+  { label: "Email", href: "mailto:hello@rhdevs.org" },
+  { label: "Discord", href: "#" },
 ];
 
 export function FooterSection() {
   return (
-    <footer className="relative border-t border-border/40 px-6 py-20">
-      <div className="mx-auto max-w-5xl">
+    <footer className="relative border-t border-rule bg-ink-sunk">
+      <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10">
         <ScrollReveal>
-          <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-            <div>
-              <h3 className="text-xl font-bold tracking-tight">
-                RH Developers
-              </h3>
-              <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-                Building future-ready creators, leaders, and problem-solvers.
+          <div className="grid gap-y-12 py-[clamp(4rem,1rem+6vw,7rem)] lg:grid-cols-12 lg:gap-x-12">
+            {/* Wordmark + closing line */}
+            <div className="lg:col-span-6">
+              <a href="#" className="inline-flex items-center gap-3">
+                <img src={logo} alt="" className="h-8 w-8" />
+                <span className="font-display text-h4 font-extrabold tracking-tight text-paper">
+                  RH<span className="text-oxblood">·</span>Developers
+                </span>
+              </a>
+              <p className="mt-6 measure-narrow text-paper-muted">
+                A student-led developer community at Raffles. Cohort 26 / 27.
+              </p>
+              <p className="mt-10 section-label">
+                Reach out for partnership, recruitment, or press
               </p>
             </div>
 
-            <div>
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-                Connect With Us
-              </p>
-              <div className="flex gap-3">
+            {/* Links */}
+            <nav aria-label="Connect" className="lg:col-span-4">
+              <p className="section-label">Connect</p>
+              <ul className="mt-5 space-y-3">
                 {links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    aria-label={link.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors duration-200 hover:bg-primary/10 hover:text-primary"
-                  >
-                    <link.icon className="h-4 w-4" />
-                  </a>
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
+                      className="underline-grow font-display text-h4 font-bold text-paper inline-flex items-baseline gap-2"
+                    >
+                      {link.label}
+                      <span aria-hidden className="text-paper-muted">↗</span>
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
+            </nav>
+
+            {/* Colophon */}
+            <div className="lg:col-span-2">
+              <p className="section-label">Colophon</p>
+              <p className="mt-5 text-sm text-paper-muted">
+                Set in <span className="text-paper">Cabinet Grotesk</span> and{" "}
+                <span className="text-paper">General Sans</span>. Built with React and TanStack.
+              </p>
             </div>
           </div>
         </ScrollReveal>
 
-        <div className="mt-14 border-t border-border/30 pt-6">
-          <p className="text-center text-xs text-muted-foreground/60">
-            © 2026 RHDevs. All rights reserved.
-          </p>
+        <div className="flex flex-col gap-3 border-t border-rule py-6 text-sm text-paper-faint sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 RHDevs. Raffles, Singapore.</p>
+          <p className="tabular">Cohort 26 / 27 — Index v2</p>
         </div>
       </div>
     </footer>

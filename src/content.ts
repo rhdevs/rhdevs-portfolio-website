@@ -432,17 +432,50 @@ export const newFrontiers = {
   coOrganisers: ["CDE Club", "Eusoff Hackers", "RMI Club", "Sheares Hall", "KEVII Hall"],
   /*
    * The deck lists these roles as proposed ("roles to be agreed"); the page says so.
-   * TODO(content): official logo files from each partner. Drop them in
-   * assets-src/partners/<id>.png (or .svg), run `npm run assets`, then set
-   * `logo` here from the dimensions the script prints. Until then each
-   * partner shows as a name tile.
+   * Logos: official files in assets-src/partners/<id>.(png|jpg|svg), converted
+   * by `npm run assets`. A partner with logo: null shows as a name tile.
    */
   organiserRoles: [
-    { id: "cde-club", name: "CDE Club", role: "Proposed Open Innovation host", logo: null as PartnerLogo | null },
-    { id: "eusoff-hackers", name: "Eusoff Hackers", role: "Co-organiser", logo: null as PartnerLogo | null },
-    { id: "rmi-club", name: "RMI Club", role: "Proposed Robotics host", logo: null as PartnerLogo | null },
-    { id: "sheares-hall", name: "Sheares Hall", role: "Hall Life challenge co-host", logo: null as PartnerLogo | null },
-    { id: "kevii-hall", name: "KEVII Hall", role: "Hall Life challenge co-host", logo: null as PartnerLogo | null },
+    {
+      id: "cde-club",
+      name: "CDE Club",
+      role: "Proposed Open Innovation host",
+      group: "Track hosts (proposed)",
+      detail: "Open Innovation track",
+      logo: { src: "/partners/cde-club.webp", width: 308, height: 320 } as PartnerLogo | null,
+    },
+    {
+      id: "eusoff-hackers",
+      name: "Eusoff Hackers",
+      role: "Co-organiser",
+      group: "Co-organiser",
+      detail: "Startup Viability track",
+      logo: { src: "/partners/eusoff-hackers.webp", width: 238, height: 320 } as PartnerLogo | null,
+    },
+    {
+      id: "rmi-club",
+      name: "RMI Club",
+      role: "Proposed Robotics host",
+      group: "Track hosts (proposed)",
+      detail: "Robotics track",
+      logo: { src: "/partners/rmi-club.webp", width: 313, height: 320 } as PartnerLogo | null,
+    },
+    {
+      id: "sheares-hall",
+      name: "Sheares Hall",
+      role: "Hall Life challenge co-host",
+      group: "Hall Life challenge",
+      detail: "Co-host",
+      logo: { src: "/partners/sheares-hall.webp", width: 366, height: 320 } as PartnerLogo | null,
+    },
+    {
+      id: "kevii-hall",
+      name: "KEVII Hall",
+      role: "Hall Life challenge co-host",
+      group: "Hall Life challenge",
+      detail: "Co-host",
+      logo: { src: "/partners/kevii-hall.webp", width: 272, height: 320 } as PartnerLogo | null,
+    },
   ],
 
   /* What a sponsor could contribute, and get back. Generic: no sponsor is named until signed. */

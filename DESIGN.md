@@ -61,6 +61,7 @@ Display and headings: weight 600, tracking -0.03 to -0.05em, leading 0.93–1.05
 - **Countdown:** days to the proposed New Frontiers kickoff, from `newFrontiers.dates.kickoffISO`. Rendered by JS only, so a stale number can never ship in HTML.
 - **Screenshots:** `ScreenshotSlot`, on a `raised` frame, with a 640w variant for phones. Residents' names are blurred before an image enters `assets-src/products/`.
 - **Portraits:** greyscale at rest, full colour on hover, 4:5. The Head gets a full row (photo left, name at display scale right); Vice Heads share the row below at one step down.
+- **Partner logos:** official logos shown as they are, with no plates, borders or cards, all at one height (`PartnerLogo`). Organisers section: the full RH Developers lockup large on the left; the five partners on the right as logo with name and role underneath, three on the first row and two centred on the second. Intros show the same logos small, in a row.
 - **Contact rows:** the row fills with `fg` from the left on hover and the text inverts.
 - **Footer:** links, then the wordmark at full width in `muted` (decorative, `aria-hidden`), letters rising in sequence.
 

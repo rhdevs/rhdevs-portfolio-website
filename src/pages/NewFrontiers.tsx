@@ -1,7 +1,7 @@
-import { contact, newFrontiers as nf, products, site } from "@/content";
+import { contact, newFrontiers as nf, products } from "@/content";
 import { Footer, Header } from "@/components/chrome";
-import { ArrowRight, ArrowUpRight, Label, Logo, Marquee, Reveal, RiseText, SectionHead } from "@/components/primitives";
-import { CoOrganisers, PartnerMark, Sponsors } from "@/components/CoOrganisers";
+import { ArrowRight, ArrowUpRight, Label, Marquee, Reveal, RiseText, SectionHead } from "@/components/primitives";
+import { CoOrganisers, PartnerLogo, Sponsors } from "@/components/CoOrganisers";
 
 const deckMailto = `mailto:${contact.email}?subject=${encodeURIComponent(
   "New Frontiers sponsor deck",
@@ -426,37 +426,50 @@ function Organisers() {
         meta="Partner roles to be agreed"
         title="Led by RHDevs, built with five partners."
       />
-      <div className="mt-[var(--space-head)] grid-12 gap-[var(--col-gap)]">
-        {/* Lead organiser: our own mark on the dark ground. */}
-        <Reveal className="col-span-12 flex flex-col justify-between gap-10 bg-bg p-[var(--pad-card)] lg:col-span-4 lg:row-span-2">
-          <div className="flex items-center gap-4">
-            <Logo size={64} />
-            <span className="text-[clamp(1.75rem,1.25rem+1.5vw,2.5rem)] font-semibold tracking-[-0.04em]">RHDevs</span>
-          </div>
-          <div>
-            <Label>Lead organiser</Label>
-            <p className="mt-2 text-fg-2">
-              A {site.memberCount}-person student engineering and design team at {site.hall}, shipping live
-              products to about 600 residents.{" "}
-              <a href="/#work" className="link text-fg">See our work</a>.
-            </p>
-          </div>
+
+      <div className="mt-[var(--space-head)] grid-12 items-center gap-y-16">
+        {/* Lead organiser: the full RH Developers lockup, large. */}
+        <Reveal className="col-span-12 flex flex-col items-center text-center lg:col-span-5">
+          <img
+            src="/brand/rhdevs-lockup.webp"
+            width={1000}
+            height={405}
+            alt="RH Developers"
+            loading="lazy"
+            decoding="async"
+            className="h-auto w-full max-w-[34rem]"
+          />
+          <p className="mt-8 font-mono text-[clamp(1rem,0.85rem+0.6vw,1.375rem)] tracking-[-0.01em] text-fg-2">
+            Lead organiser
+          </p>
         </Reveal>
 
-        {/* Co-organisers: each mark on a light plate, role underneath. */}
-        <ul className="col-span-12 grid gap-[var(--col-gap)] sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
-          {nf.organiserRoles.map((o, i) => (
-            <Reveal as="li" key={o.id} delay={i * 60} className="group flex flex-col bg-bg">
-              <div className="flex aspect-[3/2] items-center justify-center bg-[#f6f6f4] p-6 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-[0.98]">
-                <PartnerMark partner={o} />
-              </div>
-              <div className="p-4">
-                {o.logo && <p className="font-semibold">{o.name}</p>}
-                <p className="text-sm text-fg-2">{o.role}</p>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
+        {/*
+          Co-organisers, logo with the name underneath. First row: the three
+          track sponsors, each with its track. Second row: the two halls.
+        */}
+        <div className="col-span-12 lg:col-span-7 lg:col-start-6">
+          <p className="text-center font-mono text-[clamp(1rem,0.85rem+0.6vw,1.375rem)] tracking-[-0.01em] text-fg-2">
+            Track sponsors
+          </p>
+          <ul className="mt-8 grid grid-cols-6 gap-x-[var(--col-gap)] gap-y-14">
+            {nf.organiserRoles.map((o, i) => {
+              const sponsor = i < 3;
+              return (
+                <Reveal
+                  as="li"
+                  key={o.id}
+                  delay={i * 60}
+                  className={`col-span-2 flex flex-col items-center text-center ${i === 3 ? "col-start-2 mt-4" : i === 4 ? "mt-4" : ""}`}
+                >
+                  <PartnerLogo partner={o} />
+                  <p className="mt-6 text-lg font-semibold tracking-[-0.02em] sm:text-2xl">{o.name}</p>
+                  <p className="mt-1.5 text-sm text-fg-2 sm:text-base">{sponsor ? o.detail : o.role}</p>
+                </Reveal>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </section>
   );

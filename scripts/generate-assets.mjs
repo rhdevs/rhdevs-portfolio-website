@@ -104,6 +104,11 @@ async function brand() {
       2,
     ),
   );
+  // Full "RH Developers" lockup (black background already removed), for the organisers section.
+  if (fs.existsSync(src("rhdevs-lockup.png"))) {
+    const info = await sharp(src("rhdevs-lockup.png")).resize(1000).webp({ quality: 90 }).toFile(pub("brand/rhdevs-lockup.webp"));
+    console.log(`brand: /brand/rhdevs-lockup.webp  width: ${info.width}, height: ${info.height}`);
+  }
   console.log("brand: logo, favicon.ico, icons, manifest");
   return logo;
 }
@@ -157,7 +162,7 @@ async function partners() {
     const id = f.replace(/.[^.]+$/, "");
     const info = await sharp(path.join(dir, f), { density: 300 })
       .trim()
-      .resize({ height: 160, width: 480, fit: "inside" })
+      .resize({ height: 320, width: 960, fit: "inside" })
       .webp({ quality: 90 })
       .toFile(pub(`partners/${id}.webp`));
     console.log(`partner: logo: { src: "/partners/${id}.webp", width: ${info.width}, height: ${info.height} }`);

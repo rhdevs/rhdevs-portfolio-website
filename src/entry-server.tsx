@@ -25,9 +25,9 @@ export const routes: RouteDef[] = [
     file: "index.html",
     title: "RHDevs · We build the software Raffles Hall runs on",
     description:
-      "RHDevs is a 25-person student engineering and design team at Raffles Hall, NUS. We build and maintain RHApp, used by about 500 residents, and the bots behind the hall's CCA claims and peer support.",
+      "RHDevs is a 25-person student engineering and design team at Raffles Hall, NUS. We build and maintain RHApp, used by about 600 residents, and the bots behind the hall's CCA claims and peer support.",
     ogImage: "/og/home.png",
-    ogImageAlt: "RHDevs: we build the software Raffles Hall runs on. ~500 residents, 100% of CCA claims, 30+ CCA leaders.",
+    ogImageAlt: "RHDevs: we build the software Raffles Hall runs on. ~600 residents, 100% of CCA claims, 70+ CCA leaders.",
     page: Home,
   },
   {

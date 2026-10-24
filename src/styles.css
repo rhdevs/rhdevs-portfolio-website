@@ -616,3 +616,17 @@
     display: none;
   }
 }
+
+/* Native disclosure (guiding questions): no marker, a + that turns to ×. */
+.disclosure > summary {
+  list-style: none;
+}
+.disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.disclosure-icon {
+  transition: transform 300ms var(--ease-out-quart);
+}
+.disclosure[open] .disclosure-icon {
+  transform: rotate(45deg);
+}

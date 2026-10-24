@@ -68,6 +68,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             <li><a className="link" href={contact.telegramUrl}>Telegram</a></li>
             <li><a className="link" href={`mailto:${contact.email}`}>Email</a></li>
+            <li><a className="link" href={contact.linkedinUrl}>LinkedIn</a></li>
           </ul>
         </div>
       </div>

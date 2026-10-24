@@ -147,6 +147,23 @@ async function productShots() {
   }
 }
 
+/* ---------------- Partner logos ---------------- */
+// Official files from each partner, trimmed and scaled to a common height.
+async function partners() {
+  const dir = src("partners");
+  if (!fs.existsSync(dir)) return;
+  ensure(pub("partners/x"));
+  for (const f of fs.readdirSync(dir).filter((f) => /.(png|jpe?g|svg|webp)$/i.test(f))) {
+    const id = f.replace(/.[^.]+$/, "");
+    const info = await sharp(path.join(dir, f), { density: 300 })
+      .trim()
+      .resize({ height: 160, width: 480, fit: "inside" })
+      .webp({ quality: 90 })
+      .toFile(pub(`partners/${id}.webp`));
+    console.log(`partner: logo: { src: "/partners/${id}.webp", width: ${info.width}, height: ${info.height} }`);
+  }
+}
+
 /* ---------------- OG images ---------------- */
 const font = (pkg, file) => fs.readFileSync(path.join(root, "node_modules", pkg, "files", file));
 const fonts = [
@@ -193,9 +210,9 @@ async function og(logo) {
       "RAFFLES HALL · NUS",
       [h("div", { fontSize: 88, fontWeight: 600, letterSpacing: -4, lineHeight: 0.98, maxWidth: 1000 }, "We build the software Raffles Hall runs on.")],
       [
-        stat("~500", "residents use RHApp", true),
+        stat("~600", "residents use RHApp", true),
         stat("100%", "of CCA claims via Finance bot"),
-        stat("30+", "CCA leaders on it"),
+        stat("70+", "CCA leaders on it"),
       ],
     ),
     "new-frontiers": frame(
@@ -225,4 +242,5 @@ async function og(logo) {
 const logo = await brand();
 await team();
 await productShots();
+await partners();
 await og(logo);

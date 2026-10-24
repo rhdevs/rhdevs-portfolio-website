@@ -48,7 +48,7 @@ function Hero() {
           <h1 id="hero-title" className="text-hero max-w-[12ch]">
             <RiseText text={HEADLINE} />
           </h1>
-          <p className="text-lead mt-8 max-w-[30ch]">Used by about 500 residents. Endorsed by the JCRC and hall admin.</p>
+          <p className="text-lead mt-8 max-w-[30ch]">Used by about 600 residents. Endorsed by the JCRC and hall admin.</p>
           <p className="mt-4 max-w-[44ch] text-fg-2">
             RHDevs is a {site.memberCount}-person student engineering and design team at {site.hall},{" "}
             {site.university}.
@@ -119,9 +119,9 @@ function Proof() {
       <Reveal className="shell grid-12 gap-y-4 py-[clamp(3.5rem,2rem+4.5vw,7rem)]">
         <p className="label col-span-12 md:col-span-3 md:pt-[0.75em]">In use today</p>
         <p className="text-statement col-span-12 max-w-[30ch] text-fg-2 md:col-span-9">
-          <N>~500</N> residents use{" "}
+          <N>~600</N> residents use{" "}
           <a href="#rhapp" className="link text-fg">RHApp</a>. <N>100%</N> of the hall's CCA claims run
-          through the <a href="#finance-bot" className="link text-fg">Finance bot</a>, from <N>30+</N> CCA
+          through the <a href="#finance-bot" className="link text-fg">Finance bot</a>, from <N>70+</N> CCA
           leaders.
         </p>
       </Reveal>
@@ -401,12 +401,22 @@ function Team() {
             {head.name}
           </h3>
           <p className="text-lead mt-5 text-fg-2">{head.role}</p>
-          <a
-            href={contact.telegramUrl}
-            className="row-link mt-8 inline-flex items-center gap-2 font-mono text-sm text-fg-2 transition-colors hover:text-fg"
-          >
-            Telegram {contact.telegramHandle} <ArrowUpRight />
-          </a>
+          <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-3 font-mono text-sm">
+            {[
+              { href: contact.telegramUrl, label: `Telegram ${contact.telegramHandle}` },
+              { href: contact.linkedinUrl, label: "LinkedIn" },
+              { href: contact.websiteUrl, label: contact.websiteLabel },
+            ].map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="row-link inline-flex items-center gap-2 text-fg-2 transition-colors hover:text-fg"
+                >
+                  {l.label} <ArrowUpRight />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </Reveal>
 
@@ -478,7 +488,7 @@ function Contact() {
       <SectionHead
         id="contact-title"
         label="Join or get in touch"
-        meta="Telegram or email"
+        meta="Telegram, email or LinkedIn"
         title="Want to build with us?"
         intro={recruitment.timing ?? `Message ${contact.name} to ask about the next intake.`}
       />
@@ -487,6 +497,7 @@ function Contact() {
           <ul>
             <ContactRow href={contact.telegramUrl} label="Telegram" value={contact.telegramHandle} />
             <ContactRow href={`mailto:${contact.email}`} label="Email" value={contact.email} />
+            <ContactRow href={contact.linkedinUrl} label="LinkedIn" value={contact.linkedinLabel} />
           </ul>
           <p className="mt-6 text-fg-2">
             {contact.name}, {contact.role}. Sponsoring New Frontiers? Same channels, or read the{" "}

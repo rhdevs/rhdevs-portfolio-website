@@ -24,7 +24,7 @@ for (const el of document.querySelectorAll<HTMLElement>("[data-countdown]")) {
 
 if (motionOK && "IntersectionObserver" in window) {
   /* ---------- Count-up ---------- */
-  // "~500" -> prefix "~", 500, suffix "". Final text is restored exactly at the end.
+  // "~600" -> prefix "~", 600, suffix "". Final text is restored exactly at the end.
   const countUp = (el: HTMLElement) => {
     const final = el.textContent ?? "";
     const m = final.match(/^(\D*)(\d+)(\D*)$/);

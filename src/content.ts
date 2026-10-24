@@ -8,7 +8,7 @@
 
 export const site = {
   // TODO(content): switch to the custom domain if one is set up (also used for canonical + OG URLs).
-  url: "https://rhdevs-portfolio-website.vercel.app",
+  url: "https://rhdevs.vercel.app",
   name: "RHDevs",
   hall: "Raffles Hall",
   university: "National University of Singapore",

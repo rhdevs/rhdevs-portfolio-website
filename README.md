@@ -19,7 +19,7 @@ npm run assets     # regenerate favicons, portraits, product screenshots, OG ima
 `npm run build` writes `dist/index.html`, `dist/new-frontiers.html` and `dist/404.html` with all content in the raw HTML. Check it with:
 
 ```bash
-curl -s https://rhdevs-portfolio-website.vercel.app/ | grep -o "We build the software Raffles Hall runs on"
+curl -s https://rhdevs.vercel.app/ | grep -o "We build the software Raffles Hall runs on"
 ```
 
 ## Adding things

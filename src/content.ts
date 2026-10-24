@@ -95,15 +95,15 @@ export const products: Product[] = [
     metric: { value: "100%", label: "of the hall's CCA claims", short: "of CCA claims" },
     screenshot: {
       src: "/products/finance-bot.webp",
-      width: 476,
-      height: 357,
-      alt: "Finance bot claims dashboard: counts of claims by stage, from review to submitted and reimbursed.",
+      width: 486,
+      height: 365,
+      alt: "Finance bot claims dashboard: claim counts by stage, from review to reimbursed, with reminders for treasurers.",
     },
     phone: {
       src: "/products/finance-bot-phone.webp",
-      width: 478,
-      height: 840,
-      alt: "Finance bot in Telegram: the Finance Hub claims dashboard with claim counts by stage and treasurer reminders.",
+      width: 486,
+      height: 876,
+      alt: "Finance bot in Telegram: the claims dashboard with counts by stage, treasurer reminders and the latest claims.",
     },
   },
   {

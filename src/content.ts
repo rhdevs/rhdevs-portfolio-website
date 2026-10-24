@@ -71,10 +71,10 @@ export const products: Product[] = [
     endorsement:
       "Endorsed by the JCRC and hall admin as the main way to apply for CCAs, register for events and book rooms.",
     screenshot: {
-      src: "/products/rhapp-calendar.webp",
-      width: 712,
-      height: 508,
-      alt: "RHApp room-booking calendar for September 2026, with a dot on each day that has bookings.",
+      src: "/products/rhapp.webp",
+      width: 1291,
+      height: 800,
+      alt: "RHApp booking hub: a September calendar beside the day's room bookings, with a Book a Facility button.",
     },
     overview: {
       src: "/products/rhapp.webp",

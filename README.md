@@ -1,83 +1,32 @@
-# RHDevs Website
+# RHDevs website
 
-A modern, minimalist website for **RHDevs**, a student-led development CCA focused on **technology, AI, creativity, and innovation**.
+The public site for RHDevs, the student engineering and design team at Raffles Hall, NUS.
 
-This website is designed as a clean, scroll-based experience that introduces RHDevs, showcases its leadership team, highlights its **milestones**, and provides ways for visitors to connect with the club.
+- **Stack:** React + Vite + Tailwind v4, statically generated at build time. Ships about 1 kB of JS.
+- **Hosting:** Vercel (`vercel.json`).
+- **Content:** every fact, flag and TODO is in [`src/content.ts`](src/content.ts).
 
----
+## Scripts
 
-## 🎨 Design Direction
-
-The website follows a **modern minimalist aesthetic** with:
-- strong typography
-- clean spacing
-- subtle scroll-based animations
-- a polished, student-tech-club feel
-- responsive layout for desktop and mobile
-
-The intended tone is:
-- professional
-- youthful
-- innovative
-- approachable
-
----
-
-## 🧭 Website Structure
-
-- **Home**
-  - Hero section
-    - RHDevs logo
-    - Title
-    - Tagline
-
-- **About Us**
-  - Intro
-  - Mission
-  - Vision
-
-- **Meet the Team**
-  - Head of RHDevs
-  - Core Team
-    - Engineering Head
-    - Engineering Head
-    - Design Head
-
-- **26/27 Milestones**
-  - Expandable interactive timeline
-
-- **Footer**
-  - Connect With Us
-
----
-
-## 🛠 Tech Stack
-
-> Update this section based on your actual implementation.
-
-Possible stack:
-- **Frontend:** React / Next.js / HTML / CSS / Tailwind CSS
-- **Animations:** Framer Motion / AOS / GSAP
-- **Deployment:** Vercel / Netlify / GitHub Pages
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
-```bash
-git clone https://github.com/your-username/rhdevs-website.git
-cd rhdevs-website
-```
-
-### Install Dependencies
 ```bash
 npm install
+npm run dev        # dev server, server-rendered like production
+npm run build      # client build + SSR build + prerender to dist/
+npm run preview    # serve dist/ locally
+npm run assets     # regenerate favicons, portraits, product screenshots, OG images
 ```
 
-### Run the Developement server
+`npm run build` writes `dist/index.html`, `dist/new-frontiers.html` and `dist/404.html` with all content in the raw HTML. Check it with:
+
 ```bash
-npm run dev
+curl -s https://rhdevs-portfolio-website.vercel.app/ | grep -o "We build the software Raffles Hall runs on"
 ```
 
+## Adding things
 
+- **Product screenshot:** crop it and blur any residents' names, put the PNG in `assets-src/products/` (e.g. `rhapp.png`), run `npm run assets`, then set `screenshot` on that product in `src/content.ts` using the `.webp` path and the width and height the script prints. Only the `.webp` in `public/products/` ships.
+- **Sponsor deck:** put the PDF at `public/new-frontiers-sponsor-deck.pdf` and set `newFrontiers.sponsorDeckUrl` to `/new-frontiers-sponsor-deck.pdf`.
+- **Sponsor:** only after they sign, add `{ name, url, logo? }` to `newFrontiers.sponsors`.
+- **Portrait:** replace the photo in `assets-src/`, adjust its crop in `scripts/generate-assets.mjs`, run `npm run assets`.
+
+Search the code for `TODO(content)` to find every open item.
